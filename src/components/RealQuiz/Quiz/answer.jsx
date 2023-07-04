@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const Question = ({ question, order }) => {
+const Answer = ({ question, order }) => {
   const [answerIndex, setAnswerIndex] = React.useState(null);
   const [textQuestion, setTextQuestion] = React.useState("");
   const [answerEdit, setAnswerEdit] = React.useState(false);
@@ -52,7 +52,7 @@ const Question = ({ question, order }) => {
   return (
     <div className="w-[calc(100%-50px)] ml-2 mt-4 p-4 bg-white border-[1px] drop-shadow-lg  rounded-lg">
       <h1
-        contentEditable="true"
+        contenteditable="true"
         className="outline-none bg-sky-200 p-2 rounded-lg border-[1px] border-sky-900"
       >
         {`              Câu hỏi ${order}: ${textQuestion}`}
@@ -79,7 +79,7 @@ const Question = ({ question, order }) => {
               </label>
 
               <button
-                contentEditable="true"
+                contenteditable="true"
                 onClick={() => {
                   setAnswerEdit(index2);
                 }}
@@ -108,4 +108,4 @@ const Question = ({ question, order }) => {
   );
 };
 
-export default Question;
+export default Answer;

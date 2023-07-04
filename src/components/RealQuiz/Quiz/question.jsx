@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const Question = ({ question, order }) => {
+const Question = ({ question, order, setCorrectness }) => {
   const [answerIndex, setAnswerIndex] = React.useState(null);
   const [textQuestion, setTextQuestion] = React.useState("");
   const [answerEdit, setAnswerEdit] = React.useState(false);
@@ -50,11 +50,11 @@ const Question = ({ question, order }) => {
   }, [answerIndex]);
 
   return (
-    <div className="w-[calc(100%-50px)] ml-2 mt-4 p-4 bg-white border-[1px] drop-shadow-lg  rounded-lg">
-      <h1
-        contentEditable="true"
-        className="outline-none bg-sky-200 p-2 rounded-lg border-[1px] border-sky-900"
-      >
+    <div
+      className="w-[calc(100%-50px)] ml-2 mt-4 p-4 bg-white border-[1px] drop-shadow-lg  rounded-lg question-test"
+      correct={answerIndex}
+    >
+      <h1 className="outline-none bg-sky-200 p-2 rounded-lg border-[1px] border-sky-900">
         {`              Câu hỏi ${order}: ${textQuestion}`}
       </h1>
       <div className="flex flex-col text-left mt-2">
@@ -68,10 +68,6 @@ const Question = ({ question, order }) => {
                   type="radio"
                   name={`question-${order}`}
                   className="w-5 h-5 text-orange-600 bg-gray-100 border-orange-300 focus:ring-orange-500"
-                  checked={
-                    (answerIndex && answerIndex === index2) ||
-                    (answerIndex === 0 && index2 === 0)
-                  }
                   onChange={() => {
                     setAnswerIndex(index2);
                   }}
@@ -79,23 +75,12 @@ const Question = ({ question, order }) => {
               </label>
 
               <button
-                contentEditable="true"
                 onClick={() => {
                   setAnswerEdit(index2);
                 }}
                 className={`text-left mt-2 
-                ${
-                  (answerEdit && answerEdit === index2) ||
-                  (answerEdit === 0 && index2 === 0)
-                    ? " border-[1px] border-dashed"
-                    : "border-[1px]"
-                }
-                ${
-                  (answerIndex && answerIndex === index2) ||
-                  (answerIndex === 0 && index2 === 0)
-                    ? "bg-emerald-200 text-emerald-900 border-emerald-600 "
-                    : "bg-orange-200 text-orange-900 border-orange-600 "
-                }
+                border-[1px]
+                bg-orange-200 text-orange-900 border-orange-600
               }  rounded-lg p-4 `}
               >
                 {option}

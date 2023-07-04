@@ -8,18 +8,6 @@ const Quizz = ({ questions }) => {
       {questions && (
         <div className="gap-2 flex-col flex  pl-4">
           {questions.choices && <Quiz data={questions.choices} />}
-          {questions?.choices.map(({ options, question, answer }, index) => {
-            // return (
-            //   <div className="p-2">
-            //     <Question title={question} index={index} />
-            //     {options.map((option, key) => {
-            //       return (
-            //         <Choice unique_key={`q_${index}_${key}`} content={option} />
-            //       );
-            //     })}
-            //   </div>
-            // );
-          })}
         </div>
       )}
     </Fragment>
